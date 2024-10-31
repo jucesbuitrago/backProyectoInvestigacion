@@ -3,13 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Student;
 
 class StudentController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index1()
     {
         //
     }
@@ -17,7 +18,7 @@ class StudentController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store1(Request $request)
     {
         //
     }
@@ -25,7 +26,7 @@ class StudentController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show1(string $id)
     {
         //
     }
@@ -33,7 +34,7 @@ class StudentController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update1(Request $request, string $id)
     {
         //
     }
@@ -41,8 +42,45 @@ class StudentController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy1(string $id)
     {
         //
+    }
+
+
+
+    protected $student;
+    public function __construct(){
+        $this->student = new Student();
+        
+    }
+    public function index()
+    {
+        return $this->student->all();
+     
+    }
+    
+    public function store(Request $request)
+    {
+     return $this->student->create($request->all());
+    
+       
+    }
+  
+    public function show(string $id)
+    {
+     $student = $this->student->find($id);  
+    }
+
+    public function update(Request $request, string $id)
+    {
+         $student = $this->student->find($id);
+         $student->update($request->all());
+         return $student;
+    }
+    public function destroy(string $id)
+    {
+     $student = $this->student->find($id);
+    return $student->delete();   
     }
 }
