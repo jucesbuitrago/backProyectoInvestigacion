@@ -19,7 +19,7 @@ return [
 
     'allowed_methods' => ['*'],
 
-    'allowed_origins' => ['https://jucesbuitrago.github.io/proyectoInvestigacion/'],
+    'allowed_origins' => ['https://jucesbuitrago.github.io'],
 
     'allowed_origins_patterns' => [],
 
